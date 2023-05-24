@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1081436892753",
+    "project_id": "flutter-login-120d6",
+    "storage_bucket": "flutter-login-120d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081436892753:android:70db1612490961a714d270",
+        "android_client_info": {
+          "package_name": "com.example.login_vanguard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081436892753-kla3s83htneegbv5asa436u8io5rbkop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBnYXoZdVW9EiRhlmoCdz7ASk8kJ_kMNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081436892753-kla3s83htneegbv5asa436u8io5rbkop.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081436892753-3r64se7rrd99tkio7o9v208joc8fsp26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.loginVanguard"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
