@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:login_vanguard/firebase_options.dart';
+import 'package:login_vanguard/patients.dart';
 import 'profile_screen.dart';
 import 'auth.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ProfileScreen();
+            return Patients();
           } else {
             return const LoginScreen();
           }
