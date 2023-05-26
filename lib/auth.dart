@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
-  var user1;
 //Creating new instance of firebase auth
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -10,6 +9,13 @@ class Auth {
       email: email,
       password: password,
     );
-    user1 = user.user;
   }
+
+    Future<void> register(String email, String password) async {
+    final user = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
 }
