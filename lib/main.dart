@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +66,23 @@ class _LoginScreenState extends State<LoginScreen> {
       await Auth().signInWithEmailAndPassword(email, password);
 
       setState(() => _loading = false);
+      final db = FirebaseFirestore.instance.collection('doctor').doc();
+      db.set({'name':'rita'});
     }
 
+
+    handleRegister() async{
+      final email = _emailController.value.text;
+      final password = _passwordController.value.text;
+
+      setState(() => _loading = true);
+
+      //Check if is login or register
+
+      await Auth().register(email, password);
+
+      setState(() => _loading = false);
+    }
     //create the textfield controller
 
     return Scaffold(
@@ -131,28 +147,56 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 88.0,
             ),
-            Container(
-              width: double.infinity,
-              child: RawMaterialButton(
-                fillColor: const Color(0xFF0069FE),
-                elevation: 0.0,
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0)),
-                onPressed: () {
-                  handleSubmit();
-                },
-                child: _loading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : Text('Login'),
-              ),
+            Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: RawMaterialButton(
+                    fillColor: const Color(0xFF0069FE),
+                    elevation: 0.0,
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0)),
+                    onPressed: () {
+                      handleSubmit();
+                    },
+                    child: _loading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text('Login'),
+                  ),
+    
+                ),
+                 Container(
+                  width: double.infinity,
+                  child: RawMaterialButton(
+                    fillColor: const Color(0xFF0069FE),
+                    elevation: 0.0,
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0)),
+                    onPressed: () {
+                      handleRegister();
+                    },
+                    child: _loading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text('Register'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
