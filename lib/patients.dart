@@ -16,11 +16,32 @@ class _PatientsState extends State<Patients> {
   Widget build(BuildContext context) {
     final db = FirebaseFirestore.instance.collection('doctor');
     final ageController = TextEditingController();
+    final genderController = TextEditingController();
+    final smokerController = TextEditingController();
+    final hbCountController = TextEditingController();
+    final SystolicBPController = TextEditingController();
+    final DiastolicBPController = TextEditingController();
+    final BMIController = TextEditingController();
 
     void handle() {
       final age = ageController.value.text;
+      final gender = genderController.value.text;
+      final smoker = smokerController.value.text;
+      final hb = hbCountController.value.text;
+      final systolicBP = SystolicBPController.value.text;
+      final DiastolicBP = DiastolicBPController.value.text;
+      final BMI = BMIController.value.text;
+
       final db = FirebaseFirestore.instance.collection('doctor').doc();
-      db.set({'age': age});
+      db.set({
+        'age': age,
+        'gender': gender,
+        'smoker': smoker,
+        'hb': hb,
+        'systolicBP': systolicBP,
+        'diastolicBP': DiastolicBP,
+        'bmi': BMI
+      });
     }
 
     ;
@@ -32,6 +53,42 @@ class _PatientsState extends State<Patients> {
             controller: ageController,
             decoration: InputDecoration(
               hintText: 'Age',
+            ),
+          ),
+          TextField(
+            controller: genderController,
+            decoration: InputDecoration(
+              hintText: 'Gender',
+            ),
+          ),
+          TextField(
+            controller: smokerController,
+            decoration: InputDecoration(
+              hintText: 'Smoker',
+            ),
+          ),
+          TextField(
+            controller: hbCountController,
+            decoration: InputDecoration(
+              hintText: 'Hb Count',
+            ),
+          ),
+          TextField(
+            controller: SystolicBPController,
+            decoration: InputDecoration(
+              hintText: 'Systolic BP',
+            ),
+          ),
+          TextField(
+            controller: DiastolicBPController,
+            decoration: InputDecoration(
+              hintText: 'Diastolic BP',
+            ),
+          ),
+          TextField(
+            controller: BMIController,
+            decoration: InputDecoration(
+              hintText: 'BMI',
             ),
           ),
           ElevatedButton(
