@@ -1,77 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:login_vanguard/firebase_options.dart';
+import 'package:login_vanguard/main.dart';
 import 'patients.dart';
 import 'profile_screen.dart';
 import 'register.dart';
 import 'auth.dart';
 import 'image.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Firebase Auth',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return LoginScreen();
-          } else {
-            return const Patients();
-          }
-        },
-      ),
-    );
-  }
-}
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  //Login Function
-
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     bool _loading = false;
 
     final TextEditingController _emailController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
-
-    handleSubmit() async {
-      final email = _emailController.value.text;
-      final password = _passwordController.value.text;
-
-      setState(() => _loading = true);
-
-      //Check if is login or register
-
-      await Auth().signInWithEmailAndPassword(email, password);
-
-      setState(() => _loading = false);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Patients()));
-    }
 
     handleRegister() async {
       final email = _emailController.value.text;
@@ -84,15 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
       await Auth().register(email, password);
 
       setState(() => _loading = false);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Patients()));
     }
 
-    onRegister() {
-      print('pushed');
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Register()));
-    }
+    // onSignup() {
+    //   Navigator.push(
+    //       context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    // }
     //create the textfield controller
 
     return Scaffold(
@@ -113,9 +58,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 44.0,
             ),
             const Text(
-              'Login',
+              'Register',
               style: TextStyle(
-                  color: Colors.black,
+                  color: Color(0xFF0069FE),
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold),
             ),
@@ -126,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
-                hintText: "User Email",
+                hintText: "Your Email",
                 prefixIcon: Icon(
                   Icons.mail,
                   color: Colors.black,
@@ -140,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               obscureText: true,
               decoration: const InputDecoration(
-                hintText: "User Password",
+                hintText: "Your Password",
                 prefixIcon: Icon(
                   Icons.lock,
                   color: Colors.black,
@@ -149,10 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(
               height: 12.0,
-            ),
-            const Text(
-              "Don't Remember your password?",
-              style: TextStyle(color: Colors.blue),
             ),
             const SizedBox(
               height: 88.0,
@@ -168,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0)),
                     onPressed: () {
-                      handleSubmit();
+                      handleRegister();
                     },
                     child: _loading
                         ? const SizedBox(
@@ -179,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               strokeWidth: 2,
                             ),
                           )
-                        : Text('Login'),
+                        : Text('Register'),
                   ),
                 ),
                 SizedBox(
@@ -187,10 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                   child: Text(
-                    "New to this?",
+                    "I'm an OG?",
                     style: TextStyle(color: Colors.blue),
                   ),
-                  onPressed: () => onRegister(),
+                  onPressed: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()))
+                  },
                 ),
                 // Container(
                 //   width: double.infinity,
