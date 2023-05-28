@@ -44,40 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBWFvi4TKYLbMeiB6BXhkP3n_GfDT_LDpQ',
-    appId: '1:1081436892753:web:7fbc4be29a9be8d214d270',
-    messagingSenderId: '1081436892753',
-    projectId: 'flutter-login-120d6',
-    authDomain: 'flutter-login-120d6.firebaseapp.com',
-    storageBucket: 'flutter-login-120d6.appspot.com',
-    measurementId: 'G-VL8JL2GT3D',
+    apiKey: 'AIzaSyD28vF2nMYTtNy3J692d8tFluoplOmU4pM',
+    appId: '1:502143694517:web:242d4e5512c431b47ab0fc',
+    messagingSenderId: '502143694517',
+    projectId: 'auth-80b70',
+    authDomain: 'auth-80b70.firebaseapp.com',
+    storageBucket: 'auth-80b70.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDBnYXoZdVW9EiRhlmoCdz7ASk8kJ_kMNo',
-    appId: '1:1081436892753:android:70db1612490961a714d270',
-    messagingSenderId: '1081436892753',
-    projectId: 'flutter-login-120d6',
-    storageBucket: 'flutter-login-120d6.appspot.com',
+    apiKey: 'AIzaSyDMwVa7hnSFIDeJXN-_LHjGrUTbU8u9t0o',
+    appId: '1:502143694517:android:e9afbd1b232d18647ab0fc',
+    messagingSenderId: '502143694517',
+    projectId: 'auth-80b70',
+    storageBucket: 'auth-80b70.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCMIoF-7XpSYSIBqe0FBiDlrZ1EfYzR_3c',
-    appId: '1:1081436892753:ios:0d68bdaf4bcc46ad14d270',
-    messagingSenderId: '1081436892753',
-    projectId: 'flutter-login-120d6',
-    storageBucket: 'flutter-login-120d6.appspot.com',
-    iosClientId: '1081436892753-3r64se7rrd99tkio7o9v208joc8fsp26.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCYV3XBK4DqbD770zQnaz7OQ5sDFQDdyis',
+    appId: '1:502143694517:ios:e5d1955c49f5f67c7ab0fc',
+    messagingSenderId: '502143694517',
+    projectId: 'auth-80b70',
+    storageBucket: 'auth-80b70.appspot.com',
+    iosClientId: '502143694517-nu2h26ubg4to0ar33ubh4v1ajge9s0o7.apps.googleusercontent.com',
     iosBundleId: 'com.example.loginVanguard',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCMIoF-7XpSYSIBqe0FBiDlrZ1EfYzR_3c',
-    appId: '1:1081436892753:ios:0d68bdaf4bcc46ad14d270',
-    messagingSenderId: '1081436892753',
-    projectId: 'flutter-login-120d6',
-    storageBucket: 'flutter-login-120d6.appspot.com',
-    iosClientId: '1081436892753-3r64se7rrd99tkio7o9v208joc8fsp26.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCYV3XBK4DqbD770zQnaz7OQ5sDFQDdyis',
+    appId: '1:502143694517:ios:e5d1955c49f5f67c7ab0fc',
+    messagingSenderId: '502143694517',
+    projectId: 'auth-80b70',
+    storageBucket: 'auth-80b70.appspot.com',
+    iosClientId: '502143694517-nu2h26ubg4to0ar33ubh4v1ajge9s0o7.apps.googleusercontent.com',
     iosBundleId: 'com.example.loginVanguard',
   );
 }
