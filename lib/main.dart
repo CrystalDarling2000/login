@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return LoginScreen();
+            return Patients();
           } else {
-            return const Patients();
+            return const LoginScreen();
           }
         },
       ),
@@ -96,128 +96,136 @@ class _LoginScreenState extends State<LoginScreen> {
     //create the textfield controller
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Welcome to Vanguard',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 44.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 44.0,
-            ),
-            const Text(
-              'Login',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 44.0,
-            ),
-            TextField(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                hintText: "User Email",
-                prefixIcon: Icon(
-                  Icons.mail,
-                  color: Colors.black,
-                ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('bg.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Welcome to Vanguard',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 44.0,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
-            const SizedBox(
-              height: 26.0,
-            ),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                hintText: "User Password",
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Colors.black,
-                ),
+              const SizedBox(
+                height: 44.0,
               ),
-            ),
-            const SizedBox(
-              height: 12.0,
-            ),
-            const Text(
-              "Don't Remember your password?",
-              style: TextStyle(color: Colors.blue),
-            ),
-            const SizedBox(
-              height: 88.0,
-            ),
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  child: RawMaterialButton(
-                    fillColor: const Color(0xFF0069FE),
-                    elevation: 0.0,
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0)),
-                    onPressed: () {
-                      handleSubmit();
-                    },
-                    child: _loading
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Text('Login'),
+              const Text(
+                'Login',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 44.0,
+              ),
+              TextField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  hintText: "User Email",
+                  prefixIcon: Icon(
+                    Icons.mail,
+                    color: Colors.black,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                TextButton(
-                  child: Text(
-                    "New to this?",
-                    style: TextStyle(color: Colors.blue),
+              ),
+              const SizedBox(
+                height: 26.0,
+              ),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  hintText: "User Password",
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.black,
                   ),
-                  onPressed: () => onRegister(),
                 ),
-                // Container(
-                //   width: double.infinity,
-                //   child: RawMaterialButton(
-                //     fillColor: const Color(0xFF0069FE),
-                //     elevation: 0.0,
-                //     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                //     shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(12.0)),
-                //     onPressed: () {
-                //       handleRegister();
-                //     },
-                //     child: _loading
-                //         ? const SizedBox(
-                //             width: 20,
-                //             height: 20,
-                //             child: CircularProgressIndicator(
-                //               color: Colors.white,
-                //               strokeWidth: 2,
-                //             ),
-                //           )
-                //         : Text('Register'),
-                //   ),
-                // ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(
+                height: 12.0,
+              ),
+              const Text(
+                "Don't Remember your password?",
+                style: TextStyle(color: Colors.blue),
+              ),
+              const SizedBox(
+                height: 88.0,
+              ),
+              Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    child: RawMaterialButton(
+                      fillColor: const Color(0xFF0069FE),
+                      elevation: 0.0,
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      onPressed: () {
+                        handleSubmit();
+                      },
+                      child: _loading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : Text('Login'),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                    child: Text(
+                      "New to this?",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                    onPressed: () => onRegister(),
+                  ),
+                  // Container(
+                  //   width: double.infinity,
+                  //   child: RawMaterialButton(
+                  //     fillColor: const Color(0xFF0069FE),
+                  //     elevation: 0.0,
+                  //     padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(12.0)),
+                  //     onPressed: () {
+                  //       handleRegister();
+                  //     },
+                  //     child: _loading
+                  //         ? const SizedBox(
+                  //             width: 20,
+                  //             height: 20,
+                  //             child: CircularProgressIndicator(
+                  //               color: Colors.white,
+                  //               strokeWidth: 2,
+                  //             ),
+                  //           )
+                  //         : Text('Register'),
+                  //   ),
+                  // ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
